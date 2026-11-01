@@ -1,0 +1,1680 @@
+/**
+ * Bondam's Birthday - Premium Cinematic Styling
+ * Palettes: Lavender, Soft Pink, Peach, Warm Cream, Rich Royal Purple, Gold Accents
+ */
+
+:root {
+  --bg-deep: #160c28;
+  --bg-purple: #23123d;
+  --bg-surface: #2b184c;
+  --bg-card: rgba(255, 255, 255, 0.08);
+  --border-card: rgba(255, 255, 255, 0.14);
+
+  /* Pastel Palette */
+  --lavender: #b69df8;
+  --lavender-light: #ece6ff;
+  --soft-pink: #f472b6;
+  --pink-light: #fdf2f8;
+  --peach: #fb923c;
+  --peach-light: #ffedd5;
+  --cream: #fffdf5;
+  --gold: #f59e0b;
+  --gold-glow: #fbbf24;
+  --emerald: #34d399;
+
+  /* Typography */
+  --font-main: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-telugu: 'Ramabhadra', 'Noto Sans Telugu', sans-serif;
+
+  /* Elevation */
+  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.18);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.28);
+  --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.42);
+  --shadow-glow: 0 0 40px rgba(182, 157, 248, 0.35);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--cream);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+  line-height: 1.6;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Subtle Film Grain */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* Telugu typography helper */
+.telugu-font {
+  font-family: var(--font-telugu);
+  line-height: 1.5;
+}
+
+/* Top Navigation Bar */
+.top-nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 16px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 50;
+  background: linear-gradient(180deg, rgba(22, 12, 40, 0.75) 0%, rgba(22, 12, 40, 0) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.brand-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 16px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--gold-glow);
+  box-shadow: var(--shadow-sm);
+}
+
+.sound-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  color: #fff;
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.sound-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
+}
+
+.sound-toggle-btn.sound-active {
+  border-color: var(--gold);
+  background: rgba(245, 158, 11, 0.25);
+  color: var(--gold-glow);
+}
+
+/* Magic Buttons */
+.magic-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 36px;
+  border: none;
+  border-radius: 999px;
+  font-family: var(--font-main);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  color: #1a0f2b;
+  position: relative;
+  z-index: 5;
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.28s ease, background 0.28s ease;
+}
+
+.magic-btn.primary-glow {
+  background: linear-gradient(135deg, #fcd34d 0%, #f59e0b 50%, #f97316 100%);
+  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.magic-btn.celebration-glow {
+  background: linear-gradient(135deg, #c084fc 0%, #f472b6 50%, #fb923c 100%);
+  color: #fff;
+  box-shadow: 0 12px 36px rgba(244, 114, 182, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.magic-btn.wish-btn-glow {
+  background: linear-gradient(135deg, #fbbf24 0%, #f472b6 100%);
+  color: #2b104a;
+  box-shadow: 0 10px 32px rgba(251, 191, 36, 0.4);
+}
+
+.magic-btn.replay-glow {
+  background: linear-gradient(135deg, #a78bfa 0%, #c084fc 100%);
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(167, 139, 250, 0.35);
+}
+
+.magic-btn:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 18px 45px rgba(245, 158, 11, 0.55);
+}
+
+.magic-btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* ======================================================== */
+/* 1. OPENING SCENE: CINEMATIC COCONUT TREE & ENVIRONMENT   */
+/* ======================================================== */
+.coconut-scene {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  width: 100%;
+  overflow: hidden;
+  background: linear-gradient(180deg, #60a5fa 0%, #93c5fd 28%, #fed7aa 68%, #fbcfe8 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 85px 20px 40px;
+}
+
+/* Sky Elements */
+.sky-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.sky-sun {
+  position: absolute;
+  top: 10%;
+  right: 14%;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fffbeb 20%, #fef08a 60%, rgba(254, 240, 138, 0) 80%);
+  box-shadow: 0 0 100px rgba(254, 240, 138, 0.7);
+  animation: sunPulse 6s ease-in-out infinite alternate;
+}
+
+.sky-cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+  filter: blur(1px);
+}
+
+.sky-cloud::before, .sky-cloud::after {
+  content: '';
+  position: absolute;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.cloud-1 {
+  width: 170px;
+  height: 48px;
+  top: 14%;
+  left: 6%;
+  animation: cloudDrift 35s linear infinite;
+}
+.cloud-1::before { width: 70px; height: 70px; top: -32px; left: 24px; }
+.cloud-1::after { width: 85px; height: 85px; top: -42px; left: 70px; }
+
+.cloud-2 {
+  width: 220px;
+  height: 56px;
+  top: 24%;
+  right: 8%;
+  opacity: 0.75;
+  animation: cloudDrift 45s linear infinite reverse;
+}
+.cloud-2::before { width: 85px; height: 85px; top: -38px; left: 32px; }
+.cloud-2::after { width: 105px; height: 105px; top: -48px; left: 90px; }
+
+.cloud-3 {
+  width: 130px;
+  height: 38px;
+  top: 38%;
+  left: 32%;
+  opacity: 0.55;
+  animation: cloudDrift 55s linear infinite;
+}
+
+.flying-bird {
+  position: absolute;
+  color: #1e3a5f;
+  font-size: 1.8rem;
+  font-weight: 300;
+  opacity: 0.65;
+  animation: birdFly 18s ease-in-out infinite;
+}
+.bird-1 { top: 20%; left: 38%; animation-delay: 0s; }
+.bird-2 { top: 25%; left: 45%; animation-delay: -7s; transform: scale(0.75); }
+
+/* Intro Headline Copy */
+.scene-hero-intro {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 720px;
+  margin: 15px auto 0;
+  color: #172554;
+}
+
+.badge-tag {
+  display: inline-block;
+  padding: 6px 18px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #0369a1;
+  margin-bottom: 12px;
+  backdrop-filter: blur(6px);
+}
+
+.intro-headline {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #1e293b;
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+
+.intro-headline em {
+  font-style: italic;
+  color: #c2410c;
+  background: linear-gradient(135deg, #c2410c, #ea580c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.intro-subline {
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  color: #334155;
+  font-weight: 500;
+  margin-bottom: 22px;
+}
+
+.intro-hint {
+  font-size: 0.78rem;
+  color: #475569;
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+/* ======================================================== */
+/* THE GRAND COCONUT TREE (Central Visual Element)          */
+/* ======================================================== */
+.coconut-tree-container {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(600px, 92vw);
+  height: min(650px, 72vh);
+  pointer-events: none;
+  z-index: 6;
+}
+
+/* Palm Trunk */
+.palm-trunk {
+  position: absolute;
+  bottom: 0;
+  left: 48%;
+  width: 38px;
+  height: 75%;
+  background: linear-gradient(90deg, #78350f 0%, #b45309 40%, #d97706 70%, #78350f 100%);
+  border-radius: 20px 20px 8px 8px;
+  transform-origin: bottom center;
+  transform: rotate(-4deg);
+  box-shadow: 4px 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.trunk-texture {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: rgba(69, 26, 3, 0.4);
+  border-radius: 999px;
+}
+.t1 { top: 15%; }
+.t2 { top: 32%; }
+.t3 { top: 50%; }
+.t4 { top: 68%; }
+.t5 { top: 85%; }
+
+/* Palm Leaves Canopy */
+.palm-canopy {
+  position: absolute;
+  top: 14%;
+  left: 48%;
+  width: 0;
+  height: 0;
+  z-index: 7;
+}
+
+.palm-leaf {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 260px;
+  height: 75px;
+  background: linear-gradient(90deg, #15803d 0%, #22c55e 60%, #86efac 100%);
+  border-radius: 120px 0 120px 0;
+  clip-path: polygon(0 50%, 15% 15%, 35% 0%, 65% 5%, 85% 25%, 100% 50%, 85% 75%, 65% 95%, 35% 100%, 15% 85%);
+  transform-origin: left center;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
+}
+
+.leaf-left-far { transform: rotate(-165deg); animation: leafSway1 4s ease-in-out infinite; }
+.leaf-left-mid { transform: rotate(-135deg); width: 280px; animation: leafSway2 4.5s ease-in-out infinite 0.5s; }
+.leaf-left-low { transform: rotate(-95deg); width: 240px; animation: leafSway1 3.8s ease-in-out infinite 1s; }
+.leaf-center-up { transform: rotate(-50deg); width: 270px; animation: leafSway2 4.2s ease-in-out infinite 1.5s; }
+.leaf-right-low { transform: rotate(-10deg); width: 260px; animation: leafSway1 4.6s ease-in-out infinite 0.8s; }
+.leaf-right-mid { transform: rotate(25deg); width: 270px; animation: leafSway2 4s ease-in-out infinite 1.2s; }
+.leaf-right-far { transform: rotate(55deg); width: 240px; animation: leafSway1 3.5s ease-in-out infinite 0.3s; }
+
+/* Hanging Coconuts directly under tree leaves */
+.coconuts-cluster {
+  position: absolute;
+  top: 10px;
+  left: -20px;
+  width: 90px;
+  height: 70px;
+  z-index: 8;
+}
+
+.c-hanging {
+  position: absolute;
+  font-size: 2.8rem;
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.3));
+  transform-origin: top center;
+  transition: transform 0.3s ease;
+}
+
+.c-decor-1 { top: 0; left: -15px; transform: rotate(-12deg) scale(0.9); }
+.c-decor-2 { top: 8px; left: 35px; transform: rotate(18deg) scale(0.85); }
+.c-decor-3 { top: -6px; left: 12px; transform: rotate(5deg) scale(0.95); }
+
+/* The Chosen Hero Coconut attached to tree */
+.c-hero {
+  top: 14px;
+  left: 10px;
+  font-size: 3.2rem;
+  z-index: 9;
+  animation: coconutBreeze 3.2s ease-in-out infinite;
+}
+
+.c-hero.wobble-selected {
+  animation: coconutWobbleSelect 0.85s ease-in-out forwards !important;
+  filter: drop-shadow(0 0 16px rgba(245, 158, 11, 0.9));
+}
+
+/* Tropical Ground Landscape */
+.tropical-ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 18%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.ground-grass-hill {
+  position: absolute;
+  bottom: 0;
+  left: -5%;
+  width: 110%;
+  height: 100%;
+  background: linear-gradient(180deg, #84cc16 0%, #4d7c0f 45%, #ca8a04 100%);
+  border-radius: 50% 50% 0 0 / 25px 25px 0 0;
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.tropical-plants {
+  position: absolute;
+  bottom: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 2.2rem;
+  z-index: 6;
+  opacity: 0.9;
+}
+
+.plant, .flower {
+  display: inline-block;
+  animation: plantSway 3s ease-in-out infinite alternate;
+}
+.f1 { animation-delay: 0.5s; font-size: 2.5rem; }
+.f2 { animation-delay: 1.2s; font-size: 2.4rem; }
+
+/* Falling Coconut Element */
+.coconut-falling-element {
+  position: absolute;
+  font-size: 3.4rem;
+  z-index: 25;
+  display: none;
+  opacity: 0;
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.45));
+  pointer-events: none;
+}
+
+/* Impact Particles Container */
+.impact-particles-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 26;
+}
+
+.particle-dust {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #fef08a;
+  border-radius: 50%;
+  filter: blur(1px);
+}
+
+.particle-leaf {
+  position: absolute;
+  width: 12px;
+  height: 8px;
+  background: #65a30d;
+  border-radius: 50% 0;
+}
+
+/* Cracked Coconut Container */
+.cracked-coconut-container {
+  position: absolute;
+  display: none;
+  z-index: 28;
+  pointer-events: none;
+}
+
+.coconut-half {
+  position: absolute;
+  font-size: 3.4rem;
+}
+
+.crack-flash {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff, rgba(255, 255, 255, 0));
+}
+
+/* ======================================================== */
+/* IMAGE 6 SURPRISE REVEAL (Emerges from coconut)          */
+/* ======================================================== */
+.opening-surprise-card {
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%) scale(0.6);
+  width: min(440px, 90vw);
+  background: rgba(255, 255, 255, 0.94);
+  color: #1e1b4b;
+  border-radius: 28px;
+  padding: 24px 20px 28px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35), 0 0 50px rgba(245, 158, 11, 0.3);
+  z-index: 35;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.75s cubic-bezier(0.2, 0.9, 0.2, 1);
+  text-align: center;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 3px solid #fef08a;
+}
+
+.opening-surprise-card.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) scale(1);
+}
+
+.surprise-telugu-header {
+  margin-bottom: 16px;
+}
+
+.telugu-exclamation {
+  font-family: var(--font-telugu);
+  font-size: clamp(1.4rem, 4vw, 1.9rem);
+  font-weight: 800;
+  color: #c2410c;
+  margin-bottom: 6px;
+}
+
+.telugu-sub-message {
+  font-family: var(--font-telugu);
+  font-size: clamp(0.95rem, 2.8vw, 1.15rem);
+  color: #475569;
+  font-weight: 600;
+}
+
+/* Glowing Polaroid Frame for Image 6 */
+.surprise-photo-frame {
+  position: relative;
+  background: #fff;
+  border-radius: 18px;
+  padding: 12px 12px 18px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+  margin: 12px auto 18px;
+  max-width: 320px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.frame-tape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 22px;
+  background: rgba(251, 191, 36, 0.75);
+  border-radius: 2px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.photo-inner {
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* CRITICAL: Never crop faces or stretch! */
+  display: block;
+}
+
+.photo-caption-tag {
+  margin-top: 10px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #7c3aed;
+}
+
+/* ======================================================== */
+/* MAIN CELEBRATION CONTAINER (Story sequence)              */
+/* ======================================================== */
+.main-celebration-container {
+  background: radial-gradient(circle at 50% 10%, #2e1065 0%, #160c28 55%, #0f071d 100%);
+  color: var(--cream);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-section {
+  position: relative;
+  padding: 110px 24px 80px;
+  max-width: 1120px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Section Header Shared */
+.section-header {
+  text-align: center;
+  margin-bottom: 55px;
+}
+
+.section-tag {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  margin-bottom: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.comedy-tag { color: #f59e0b; border-color: rgba(245, 158, 11, 0.4); }
+.cake-tag { color: #f472b6; border-color: rgba(244, 114, 182, 0.4); }
+.letter-tag { color: #c084fc; border-color: rgba(192, 132, 252, 0.4); }
+.gallery-tag { color: #38bdf8; border-color: rgba(56, 189, 248, 0.4); }
+.final-tag { color: #fbbf24; border-color: rgba(251, 191, 36, 0.4); }
+
+.section-title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.section-sub {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: #cbd5e1;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+/* ======================================================== */
+/* 4. MAIN BIRTHDAY HERO SECTION                            */
+/* ======================================================== */
+.hero-celebration-section {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 130px;
+}
+
+.ambient-glow {
+  position: absolute;
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.purple-pink-glow {
+  background: radial-gradient(circle, rgba(192, 132, 252, 0.25) 0%, rgba(244, 114, 182, 0.18) 60%, transparent 80%);
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.section-badge {
+  display: inline-block;
+  padding: 8px 22px;
+  border-radius: 999px;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  color: var(--gold-glow);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  margin-bottom: 22px;
+  box-shadow: 0 4px 18px rgba(245, 158, 11, 0.25);
+}
+
+.main-hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 7.5vw, 6.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+  text-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.hero-highlight {
+  background: linear-gradient(135deg, #fcd34d 0%, #f472b6 50%, #c084fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.telugu-hero-title {
+  font-family: var(--font-telugu);
+  font-size: clamp(1.8rem, 4.5vw, 3.4rem);
+  font-weight: 800;
+  color: #fed7aa;
+  margin-bottom: 24px;
+}
+
+.hero-quote-box {
+  font-family: var(--font-telugu);
+  font-size: clamp(1.15rem, 2.5vw, 1.6rem);
+  font-weight: 700;
+  color: var(--lavender-light);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 16px 28px;
+  border-radius: 20px;
+  max-width: 680px;
+  margin: 0 auto 28px;
+  backdrop-filter: blur(8px);
+}
+
+.hero-subtext {
+  font-size: 1.1rem;
+  color: #e2e8f0;
+  max-width: 580px;
+  margin: 0 auto 36px;
+}
+
+.hero-quick-anchors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  z-index: 10;
+}
+
+.pill-anchor {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: all 0.25s ease;
+}
+
+.pill-anchor:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+  border-color: var(--lavender);
+}
+
+/* Floating Balloons */
+.floating-balloon {
+  position: absolute;
+  font-size: 3.8rem;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.35));
+  animation: balloonFloat 6s ease-in-out infinite;
+  z-index: 2;
+}
+.b-left { left: 8%; top: 22%; animation-delay: 0s; }
+.b-right { right: 8%; top: 28%; animation-delay: -2.5s; }
+.b-mid { left: 16%; bottom: 12%; animation-delay: -4.5s; font-size: 2.8rem; }
+
+/* ======================================================== */
+/* 5. FUNNY TELUGU BONDAM SECTION                           */
+/* ======================================================== */
+.funny-comedy-section {
+  position: relative;
+}
+
+.comedy-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.comedy-dialogue-card {
+  position: relative;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 24px;
+  padding: 30px 24px 26px;
+  text-align: left;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-md);
+  transition: all 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: pointer;
+}
+
+.comedy-dialogue-card:hover {
+  border-color: rgba(251, 191, 36, 0.5);
+  box-shadow: 0 16px 45px rgba(245, 158, 11, 0.22);
+}
+
+.card-emoji {
+  font-size: 2.4rem;
+  margin-bottom: 14px;
+  display: inline-block;
+  animation: emojiBounce 2.5s ease-in-out infinite alternate;
+}
+
+.telugu-quote {
+  font-family: var(--font-telugu);
+  font-size: 1.28rem;
+  font-weight: 700;
+  line-height: 1.55;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+.card-footnote {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--lavender);
+  letter-spacing: 0.08em;
+}
+
+/* Personality Lab Card */
+.personality-lab-card {
+  position: relative;
+  background: linear-gradient(145deg, #fffdf8 0%, #fdf6ea 100%);
+  color: #1e1b4b;
+  border-radius: 28px;
+  padding: 45px clamp(20px, 5vw, 60px) 40px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
+  text-align: left;
+  border: 2px solid #fef08a;
+  margin-top: 40px;
+}
+
+.lab-stamp {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  border: 3px dashed #ea580c;
+  color: #c2410c;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  transform: rotate(7deg);
+  text-align: center;
+}
+
+.lab-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: #c2410c;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.lab-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 6px;
+}
+
+.lab-subject {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin-bottom: 30px;
+}
+
+.lab-subject strong {
+  color: #0f172a;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px 35px;
+  margin-bottom: 35px;
+}
+
+.stat-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 8px;
+}
+
+.stat-top b {
+  color: #ea580c;
+  font-weight: 800;
+}
+
+.meter {
+  height: 10px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.meter i.gradient-bar {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #10b981 0%, #f59e0b 50%, #ef4444 100%);
+  border-radius: 999px;
+  transition: width 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.lab-verdict {
+  border-top: 2px dashed #cbd5e1;
+  padding-top: 26px;
+  text-align: center;
+}
+
+.verdict-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: #94a3b8;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.verdict-result {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  color: #c2410c;
+  margin-bottom: 8px;
+}
+
+.verdict-notes {
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+/* ======================================================== */
+/* 7. INTERACTIVE BIRTHDAY CAKE                             */
+/* ======================================================== */
+.birthday-cake-section {
+  position: relative;
+}
+
+.cake-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.interactive-cake {
+  position: relative;
+  width: 280px;
+  height: 260px;
+  margin: 30px auto 35px;
+}
+
+/* Candles */
+.candles-rack {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 34px;
+  z-index: 12;
+}
+
+.cake-candle {
+  position: relative;
+  width: 14px;
+  height: 52px;
+}
+
+.candle-body {
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(45deg, #f43f5e, #f43f5e 6px, #fff 6px, #fff 12px);
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.candle-wick {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 9px;
+  background: #334155;
+  border-radius: 2px;
+}
+
+.candle-flame {
+  position: absolute;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 24px;
+  background: radial-gradient(ellipse at bottom, #fff 20%, #fef08a 45%, #f97316 75%, transparent 100%);
+  border-radius: 50% 50% 20% 20%;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.95);
+  animation: flameFlicker 0.6s infinite alternate;
+  transform-origin: bottom center;
+}
+
+.candle-flame.extinguished {
+  animation: flameBlowOut 0.4s forwards !important;
+}
+
+/* Cake Tiers */
+.cake-tier {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+.tier-top {
+  top: 48px;
+  width: 160px;
+  height: 60px;
+  background: linear-gradient(180deg, #fce7f3 0%, #fbcfe8 50%, #f472b6 100%);
+  z-index: 6;
+}
+
+.tier-frosting {
+  position: absolute;
+  top: -14px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.3rem;
+}
+
+.tier-mid {
+  top: 100px;
+  width: 210px;
+  height: 65px;
+  background: linear-gradient(180deg, #ede9fe 0%, #ddd6fe 50%, #a78bfa 100%);
+  z-index: 5;
+}
+
+.icing-drips {
+  position: absolute;
+  top: -6px;
+  left: 0;
+  width: 100%;
+  height: 14px;
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tier-base {
+  top: 158px;
+  width: 260px;
+  height: 75px;
+  background: linear-gradient(180deg, #fef3c7 0%, #fde68a 50%, #f59e0b 100%);
+  z-index: 4;
+}
+
+.frosting-pearls {
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background: radial-gradient(circle, #fff 40%, transparent 60%) repeat-x;
+  background-size: 16px 12px;
+}
+
+.cake-stand {
+  position: absolute;
+  top: 228px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 16px;
+  background: linear-gradient(90deg, #cbd5e1 0%, #f8fafc 50%, #94a3b8 100%);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  z-index: 3;
+}
+
+/* Smoke particle */
+.smoke-particle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  filter: blur(4px);
+  animation: smokeRise 1.4s ease-out forwards;
+  pointer-events: none;
+}
+
+/* Wish Reveal Banner */
+.wish-reveal-banner {
+  margin-top: 35px;
+  max-width: 620px;
+  background: rgba(255, 255, 255, 0.94);
+  color: #1e1b4b;
+  border-radius: 24px;
+  padding: 30px 28px;
+  box-shadow: 0 20px 60px rgba(245, 158, 11, 0.35);
+  display: none;
+  animation: popScaleIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  border: 3px solid #fde047;
+}
+
+.wish-reveal-banner.show-wish {
+  display: block;
+}
+
+.wish-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.wish-heading {
+  font-size: clamp(1.6rem, 3.8vw, 2.2rem);
+  font-weight: 800;
+  color: #c2410c;
+  margin-bottom: 10px;
+}
+
+.wish-text {
+  font-size: 1.1rem;
+  color: #334155;
+  line-height: 1.7;
+}
+
+/* ======================================================== */
+/* 6. SPECIAL BIRTHDAY LETTER (Interactive Envelope)        */
+/* ======================================================== */
+.birthday-letter-section {
+  position: relative;
+}
+
+.letter-interaction-wrapper {
+  position: relative;
+  max-width: 760px;
+  margin: 30px auto;
+  min-height: 480px;
+}
+
+/* Vintage Envelope */
+.vintage-envelope {
+  position: relative;
+  width: min(440px, 92vw);
+  height: 260px;
+  background: linear-gradient(135deg, #e2d9cc 0%, #d4c5b1 100%);
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  perspective: 1000px;
+  transition: transform 0.3s ease;
+  overflow: visible;
+  z-index: 10;
+}
+
+.vintage-envelope:hover {
+  transform: translateY(-6px);
+}
+
+.envelope-back {
+  position: absolute;
+  inset: 0;
+  background: #c8b9a2;
+  border-radius: 12px;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ded2bf;
+  clip-path: polygon(0 0, 50% 55%, 100% 0);
+  transform-origin: top center;
+  transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 15;
+}
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0, 50% 55%);
+  background: linear-gradient(180deg, #efe6d7 0%, #dfd3c1 100%);
+  border-radius: 0 0 12px 12px;
+  z-index: 14;
+}
+
+.wax-seal {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 58px;
+  height: 58px;
+  background: radial-gradient(circle, #dc2626 40%, #991b1b 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fef08a;
+  font-family: var(--font-serif);
+  font-weight: 800;
+  font-size: 1.5rem;
+  box-shadow: 0 6px 18px rgba(153, 27, 27, 0.6);
+  z-index: 16;
+  border: 2px solid rgba(254, 240, 138, 0.4);
+  transition: transform 0.4s ease;
+}
+
+.envelope-click-cue {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 18;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #78350f;
+  background: rgba(255, 255, 255, 0.75);
+  padding: 4px 14px;
+  border-radius: 999px;
+}
+
+/* When Envelope is clicked */
+.vintage-envelope.envelope-open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 5;
+}
+
+.vintage-envelope.envelope-open .wax-seal {
+  transform: translate(-50%, -150%) scale(0.6);
+  opacity: 0;
+}
+
+.vintage-envelope.envelope-open .envelope-click-cue {
+  display: none;
+}
+
+/* The Special Parchment Letter */
+.special-parchment-letter {
+  position: relative;
+  background: #fffdf6;
+  color: #27272a;
+  border-radius: 20px;
+  padding: clamp(28px, 6vw, 55px);
+  max-width: 720px;
+  margin: 30px auto 0;
+  box-shadow: 0 25px 75px rgba(0, 0, 0, 0.45);
+  border: 1px solid #e4d7bf;
+  text-align: left;
+  line-height: 1.9;
+  font-size: clamp(1.02rem, 2.2vw, 1.25rem);
+  opacity: 0;
+  transform: translateY(40px);
+  pointer-events: none;
+  transition: all 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 20;
+}
+
+.special-parchment-letter.revealed {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.parchment-border {
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(217, 119, 6, 0.25);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.letter-stamp {
+  display: inline-block;
+  padding: 4px 14px;
+  background: rgba(244, 114, 182, 0.15);
+  border: 1px solid rgba(244, 114, 182, 0.4);
+  color: #db2777;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  margin-bottom: 22px;
+}
+
+.letter-para {
+  margin-bottom: 20px;
+  color: #3f3f46;
+}
+
+.letter-signoff {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px dashed #d4d4d8;
+  color: #b91c1c;
+  font-size: 1.25rem;
+}
+
+/* Floating Hearts Particle */
+.floating-heart-particle {
+  position: absolute;
+  font-size: 1.8rem;
+  pointer-events: none;
+  animation: heartFloatUp 2.4s ease-out forwards;
+  z-index: 30;
+}
+
+/* ======================================================== */
+/* 8. MEMORIES GALLERY – FIRST FIVE PHOTOS                  */
+/* ======================================================== */
+.memories-gallery-section {
+  position: relative;
+}
+
+.scrapbook-memories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px 28px;
+  margin: 45px auto 25px;
+  align-items: start;
+}
+
+.polaroid-card {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px 14px 22px;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.35);
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+  cursor: pointer;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.polaroid-card:hover {
+  transform: translateY(-12px) scale(1.03) rotate(0deg) !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(182, 157, 248, 0.3);
+  z-index: 15;
+}
+
+/* Subtle Natural Rotations for Scrapbook Look */
+.tilt-left-1 { transform: rotate(-3.5deg); }
+.tilt-right-1 { transform: rotate(3deg); }
+.tilt-left-2 { transform: rotate(-2.5deg); }
+.tilt-right-2 { transform: rotate(4deg); }
+.tilt-center { transform: rotate(-1.5deg); }
+
+/* Washi Tape Strips */
+.tape-strip {
+  position: absolute;
+  top: -10px;
+  width: 80px;
+  height: 22px;
+  background: rgba(254, 240, 138, 0.75);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  z-index: 5;
+}
+.tape-center { left: 50%; transform: translateX(-50%); }
+.tape-left { left: 20px; transform: rotate(-6deg); }
+.tape-right { right: 20px; transform: rotate(6deg); }
+
+.polaroid-photo-wrapper {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: #f1f5f9;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.polaroid-photo-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Styled portrait card; Lightbox allows seeing 100% full uncropped image */
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.polaroid-card:hover .polaroid-photo-wrapper img {
+  transform: scale(1.04);
+}
+
+.polaroid-info {
+  margin-top: 14px;
+}
+
+.polaroid-caption {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #1e1b4b;
+  margin-bottom: 4px;
+}
+
+.memory-number {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: #94a3b8;
+}
+
+.gallery-hint {
+  font-size: 0.85rem;
+  color: var(--lavender);
+  margin-top: 18px;
+  font-weight: 600;
+}
+
+/* ======================================================== */
+/* 9. FINAL BIRTHDAY SURPRISE                               */
+/* ======================================================== */
+.final-surprise-section {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.golden-glow {
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.22) 0%, rgba(244, 114, 182, 0.14) 55%, transparent 75%);
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.final-sparkles {
+  font-size: 1.8rem;
+  color: #fde047;
+  letter-spacing: 1.2rem;
+  margin-bottom: 24px;
+  animation: sparklePulse 3s ease-in-out infinite;
+}
+
+.final-title {
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  font-weight: 800;
+  color: #fed7aa;
+  margin-bottom: 18px;
+}
+
+.final-message {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: #e2e8f0;
+  max-width: 680px;
+  margin: 0 auto 35px;
+  line-height: 1.6;
+}
+
+.final-motto-box {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 16px 38px;
+  margin-bottom: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.motto-text {
+  font-size: clamp(1.1rem, 2.5vw, 1.55rem);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, #fcd34d 0%, #f472b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.final-signatures {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  margin-bottom: 40px;
+}
+
+.final-action-wrapper {
+  z-index: 10;
+}
+
+.replay-icon {
+  font-size: 1.3rem;
+  display: inline-block;
+  transition: transform 0.4s ease;
+}
+
+.magic-btn.replay-glow:hover .replay-icon {
+  transform: rotate(180deg);
+}
+
+/* ======================================================== */
+/* PHOTO LIGHTBOX MODAL                                     */
+/* ======================================================== */
+.photo-lightbox-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 5, 20, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.photo-lightbox-modal.active {
+  display: flex;
+}
+
+.lightbox-close-btn {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.lightbox-close-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.1);
+}
+
+.lightbox-content {
+  max-width: min(850px, 92vw);
+  max-height: 90vh;
+  text-align: center;
+  animation: popScaleIn 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.lightbox-img-frame {
+  max-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+}
+
+.lightbox-img-frame img {
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain; /* Complete uncropped view of the original photo */
+  display: block;
+}
+
+.lightbox-caption {
+  margin-top: 18px;
+  font-size: 1.25rem;
+  color: #fef08a;
+  font-weight: 700;
+}
+
+/* ======================================================== */
+/* CONFETTI LAYER                                           */
+/* ======================================================== */
+.confetti-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 90;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  width: 10px;
+  height: 14px;
+  border-radius: 2px;
+  animation: confettiDrop var(--duration, 3.2s) linear forwards;
+}
+
+.confetti-piece.circle {
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+.confetti-piece.ribbon {
+  width: 6px;
+  height: 20px;
+  border-radius: 3px;
+}

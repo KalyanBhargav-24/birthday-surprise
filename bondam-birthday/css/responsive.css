@@ -1,0 +1,235 @@
+/**
+ * Bondam's Birthday - Responsive Breakpoints & Accessibility
+ */
+
+/* Tablets & Small Laptops (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .scrapbook-memories-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .stats-grid {
+    gap: 18px 24px;
+  }
+}
+
+/* Mobile & Small Tablets (max-width: 768px) */
+@media (max-width: 768px) {
+  .top-nav-bar {
+    padding: 12px 18px;
+  }
+
+  .brand-pill {
+    padding: 5px 12px;
+    font-size: 0.72rem;
+  }
+
+  .sound-toggle-btn {
+    padding: 6px 14px;
+    font-size: 0.75rem;
+  }
+
+  /* Coconut Scene Mobile Adjustments */
+  .coconut-scene {
+    padding: 70px 16px 20px;
+  }
+
+  .intro-headline {
+    font-size: 2.2rem;
+  }
+
+  .intro-subline {
+    font-size: 0.95rem;
+  }
+
+  .coconut-tree-container {
+    height: min(480px, 62vh);
+    width: 95vw;
+    bottom: 8%;
+  }
+
+  .palm-trunk {
+    width: 28px;
+    left: 48%;
+  }
+
+  .palm-leaf {
+    width: 175px;
+    height: 52px;
+  }
+
+  .leaf-left-mid { width: 190px; }
+  .leaf-center-up { width: 185px; }
+  .leaf-right-mid { width: 185px; }
+
+  .c-hanging {
+    font-size: 2.1rem;
+  }
+  .c-hero {
+    font-size: 2.5rem;
+  }
+
+  .c-decor-1 { left: -10px; }
+  .c-decor-2 { left: 24px; }
+  .c-decor-3 { left: 8px; }
+
+  .tropical-plants {
+    font-size: 1.6rem;
+    bottom: 15px;
+  }
+
+  /* Image 6 Surprise Card Mobile */
+  .opening-surprise-card {
+    width: 94vw;
+    padding: 18px 14px 22px;
+    border-radius: 22px;
+  }
+
+  .photo-inner {
+    height: 250px;
+  }
+
+  .surprise-photo-frame {
+    margin: 8px auto 14px;
+  }
+
+  .telugu-exclamation {
+    font-size: 1.35rem;
+  }
+
+  .telugu-sub-message {
+    font-size: 0.92rem;
+  }
+
+  /* Scroll Sections */
+  .scroll-section {
+    padding: 80px 16px 60px;
+  }
+
+  .main-hero-title {
+    font-size: 2.6rem;
+  }
+
+  .telugu-hero-title {
+    font-size: 1.65rem;
+  }
+
+  .hero-quote-box {
+    font-size: 1.05rem;
+    padding: 14px 18px;
+  }
+
+  .floating-balloon {
+    font-size: 2.4rem;
+  }
+
+  /* Comedy Section */
+  .comedy-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .personality-lab-card {
+    padding: 30px 18px 25px;
+  }
+
+  .lab-stamp {
+    position: static;
+    display: inline-block;
+    margin-bottom: 12px;
+    transform: none;
+  }
+
+  /* Cake Stage */
+  .interactive-cake {
+    width: 240px;
+    height: 240px;
+  }
+
+  .tier-top { width: 140px; height: 50px; }
+  .tier-mid { width: 180px; height: 55px; top: 88px; }
+  .tier-base { width: 220px; height: 65px; top: 138px; }
+  .cake-stand { width: 240px; top: 198px; }
+
+  /* Vintage Envelope & Letter */
+  .vintage-envelope {
+    height: 220px;
+  }
+
+  .special-parchment-letter {
+    padding: 24px 18px;
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  /* Scrapbook Memories */
+  .scrapbook-memories-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 12px;
+  }
+
+  .polaroid-card {
+    padding: 10px 10px 16px;
+    border-radius: 12px;
+  }
+
+  .polaroid-caption {
+    font-size: 0.88rem;
+  }
+
+  /* Final section */
+  .final-title {
+    font-size: 2.1rem;
+  }
+
+  .final-message {
+    font-size: 1.15rem;
+  }
+
+  .motto-text {
+    font-size: 1rem;
+  }
+}
+
+/* Extra Small Phones (max-width: 420px) */
+@media (max-width: 420px) {
+  .scrapbook-memories-grid {
+    grid-template-columns: 1fr;
+    max-width: 310px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .magic-btn {
+    padding: 14px 26px;
+    font-size: 0.95rem;
+  }
+
+  .main-hero-title {
+    font-size: 2.2rem;
+  }
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .c-hero.wobble-selected {
+    animation: none !important;
+  }
+
+  .screen-shake {
+    animation: none !important;
+  }
+}

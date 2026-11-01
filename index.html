@@ -1,28 +1,591 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="te">
+
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="0; url=bondam-birthday/index.html" />
-  <title>Happy Birthday Bondam! 🥥🎂</title>
-  <style>
-    body {
-      margin: 0;
-      background: #160c28;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      font-family: 'Outfit', sans-serif;
-      color: #fef08a;
-      font-size: 1.5rem;
-      text-align: center;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#3b0764" />
+  <meta name="description"
+    content="A cinematic, emotional, and funny interactive birthday surprise website for BONDAM." />
+  <title>Happy Birthday Bondam! 🥥🎂 | The Ultimate Surprise</title>
+
+  <!-- Google Fonts with Telugu & Modern Typography Support -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Ramabhadra&family=Noto+Sans+Telugu:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
 </head>
+
 <body>
-  <p>🥥 Loading Birthday Surprise... <br><a href="bondam-birthday/index.html" style="color:#f472b6;">Click here if not redirected</a></p>
-  <script>
-    window.location.replace('bondam-birthday/index.html');
-  </script>
+  <!-- Ambient Grain Overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Persistent Sound Control Bar -->
+  <header class="top-nav-bar">
+    <div class="brand-pill">
+      <span class="brand-icon">🥥</span>
+      <span class="brand-text">BONDAM SPECIAL</span>
+    </div>
+    <div class="sound-control-wrapper">
+      <button id="soundToggle" class="sound-toggle-btn" aria-label="Toggle sound" title="Sound: Web Audio & Music">
+        <span class="sound-icon">🔇</span>
+        <span class="sound-label">SOUND</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ======================================================== -->
+  <!-- 1. OPENING SCENE: CINEMATIC COCONUT TREE & FALLING COCONUT -->
+  <!-- ======================================================== -->
+  <section id="coconutScene" class="coconut-scene active" aria-label="Opening Coconut Tree Scene">
+    <!-- Sky Environment -->
+    <div class="sky-layer">
+      <div class="sky-sun"></div>
+      <div class="sky-cloud cloud-1"></div>
+      <div class="sky-cloud cloud-2"></div>
+      <div class="sky-cloud cloud-3"></div>
+      <div class="flying-bird bird-1">⌒</div>
+      <div class="flying-bird bird-2">⌒</div>
+    </div>
+
+    <!-- Intro Headline Copy -->
+    <div class="scene-hero-intro">
+      <div class="badge-tag">A VERY SPECIAL BIRTHDAY INVESTIGATION 🥥</div>
+      <h1 class="intro-headline">Something special<br><em>is growing</em> on this tree...</h1>
+      <p class="intro-subline">Wait for it... ఈ చెట్టు మీద ఒక పెద్ద దయ్యం దాగి ఉంది! 👀</p>
+      <button id="startAdventureBtn" class="magic-btn primary-glow">
+        <span>Start the adventure 🥥</span>
+      </button>
+      <p class="intro-hint">Tap to begin · Turn on sound for the best experience 🔊</p>
+    </div>
+
+    <!-- The Grand Coconut Tree Illustration -->
+    <div class="coconut-tree-container" aria-label="Coconut Tree">
+      <!-- Palm Leaves Canopy -->
+      <div class="palm-canopy">
+        <div class="palm-leaf leaf-left-far"></div>
+        <div class="palm-leaf leaf-left-mid"></div>
+        <div class="palm-leaf leaf-left-low"></div>
+        <div class="palm-leaf leaf-center-up"></div>
+        <div class="palm-leaf leaf-right-low"></div>
+        <div class="palm-leaf leaf-right-mid"></div>
+        <div class="palm-leaf leaf-right-far"></div>
+
+        <!-- Hanging Coconuts Cluster directly under tree crown -->
+        <div class="coconuts-cluster">
+          <div class="c-hanging c-decor-1">🥥</div>
+          <div class="c-hanging c-decor-2">🥥</div>
+          <div class="c-hanging c-decor-3">🥥</div>
+          <!-- The Chosen Hero Coconut attached to the branch -->
+          <div id="heroCoconut" class="c-hanging c-hero" aria-label="Selected Coconut">🥥</div>
+        </div>
+      </div>
+
+      <!-- Tree Trunk -->
+      <div class="palm-trunk">
+        <div class="trunk-curve"></div>
+        <div class="trunk-texture t1"></div>
+        <div class="trunk-texture t2"></div>
+        <div class="trunk-texture t3"></div>
+        <div class="trunk-texture t4"></div>
+        <div class="trunk-texture t5"></div>
+      </div>
+    </div>
+
+    <!-- Tropical Foreground Landscape -->
+    <div id="groundSurface" class="tropical-ground">
+      <div class="ground-grass-hill"></div>
+      <div class="tropical-plants">
+        <span class="plant p1">🌿</span>
+        <span class="flower f1">🌺</span>
+        <span class="plant p2">🌱</span>
+        <span class="flower f2">🌸</span>
+        <span class="plant p3">🌿</span>
+      </div>
+    </div>
+
+    <!-- Falling Coconut Element (Detaches from tree coordinates) -->
+    <div id="fallingCoconut" class="coconut-falling-element" aria-hidden="true">🥥</div>
+
+    <!-- Particle Dust & Impact Container -->
+    <div id="impactDust" class="impact-particles-container" aria-hidden="true"></div>
+
+    <!-- Cracked Coconut Halves Container -->
+    <div id="coconutCracked" class="cracked-coconut-container" aria-hidden="true">
+      <div class="crack-flash"></div>
+      <div class="coconut-half shell-left">🥥</div>
+      <div class="coconut-half shell-right">🥥</div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- IMAGE 6 SURPRISE REVEAL (Emerges from coconut) -->
+    <!-- ============================================== -->
+    <div id="openingSurprise" class="opening-surprise-card" role="dialog" aria-modal="true"
+      aria-label="First Surprise Photo">
+      <div class="surprise-sparkle-halo"></div>
+
+      <!-- Dialogues -->
+      <div class="surprise-telugu-header">
+        <h2 class="telugu-exclamation animate-pop">అయ్యో బొండం వచ్చేసింది! 😂</h2>
+        <p class="telugu-sub-message animate-fade">పుట్టినరోజు జేజేలు చిట్టి పాపాయి ❤️</p>
+      </div>
+
+      <!-- Glowing Photo Frame with IMAGE 6 (bondam.jpeg) -->
+      <div class="surprise-photo-frame">
+        <div class="frame-tape"></div>
+        <div class="photo-inner">
+          <img id="revealImage6" src="assets/images/bondam.jpeg" alt="Bondam Drinking Coconut"
+            onerror="this.onerror=null; this.src='assets/images/bondam.jpg';" />
+        </div>
+        <div class="photo-caption-tag">
+          <span class="badge-text">ORIGINAL BONDAM WITH BONDAM! 🥥✨</span>
+        </div>
+      </div>
+
+      <!-- Unlock Main Celebration Button -->
+      <div class="surprise-actions">
+        <button id="openSurpriseBtn" class="magic-btn celebration-glow">
+          <span>సర్ప్రైజ్ ❤️</span>
+          <span class="btn-arrow">→</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================== -->
+  <!-- MAIN BIRTHDAY CELEBRATION EXPERIENCE (Unlocks on click)  -->
+  <!-- ======================================================== -->
+  <div id="mainCelebrationWebsite" class="main-celebration-container" style="display: none;">
+
+    <!-- ======================================================== -->
+    <!-- 4. MAIN BIRTHDAY HERO SECTION -->
+    <!-- ======================================================== -->
+    <section id="celebration" class="scroll-section hero-celebration-section">
+      <div class="ambient-glow purple-pink-glow"></div>
+
+      <!-- Floating Balloons -->
+      <div class="floating-balloon b-left">🎈</div>
+      <div class="floating-balloon b-right">🎈</div>
+      <div class="floating-balloon b-mid">🎈</div>
+
+      <div class="section-badge">CELEBRATING OUR ONE & ONLY BONDAM 👑</div>
+
+      <h1 class="main-hero-title">
+        HAPPY BIRTHDAY<br><span class="hero-highlight">BONDAM! 🎂</span>
+      </h1>
+
+      <h2 class="telugu-hero-title">
+        "పుట్టినరోజు శుభాకాంక్షలు బొండం! ❤️"
+      </h2>
+
+      <p class="hero-quote-box">
+        "థాంక్యూ బొండం, బొండంలా ఉన్నందుకు! ❤️😂
+      </p>
+
+      <p class="hero-subtext">
+        Today is your day! Unlimited snacks, endless smiles, zero complaints, and 100% royalty privileges belong only to
+        you! 🥳✨
+      </p>
+
+      <div class="hero-quick-anchors">
+        <a href="#comedy" class="pill-anchor">😂 Comedy Zone</a>
+        <a href="#cakeSection" class="pill-anchor">🎂 Cut the Cake</a>
+        <a href="#letterSection" class="pill-anchor">💌 Birthday Letter</a>
+        <a href="#memoriesSection" class="pill-anchor">📸 Memories Gallery</a>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 5. FUNNY TELUGU BONDAM SECTION -->
+    <!-- ======================================================== -->
+    <section id="comedy" class="scroll-section funny-comedy-section">
+      <div class="section-header">
+        <div class="section-tag comedy-tag">LAUGHTER THERAPY 😂</div>
+        <h2 class="section-title telugu-font">బొండం స్పెషల్ కామెడీ జోన్ 😂</h2>
+        <p class="section-sub">బాగా నచ్చిన వాళ్ళతోనే ఇలాంటి వెరైటీ కామెడీ చేయగలం!</p>
+      </div>
+
+      <!-- 5 Interactive Telugu Dialogue Cards -->
+      <div class="comedy-cards-grid">
+        <!-- Dialogue 1 -->
+        <article class="comedy-dialogue-card card-style-1">
+          <div class="card-emoji">🥥</div>
+          <p class="telugu-quote">"బొండం అంటే ఒక ఎమోషన్ రా బాబు! 😂"</p>
+          <span class="card-footnote">#PureEmotion · #UniversalTruth</span>
+        </article>
+
+        <!-- Dialogue 2 -->
+        <article class="comedy-dialogue-card card-style-2">
+          <div class="card-emoji">🤣</div>
+          <p class="telugu-quote">"నీ లాంటి పీస్ మళ్ళీ దొరకడం కష్టం... దొరికినా మనకి వద్దు! 🤣"</p>
+          <span class="card-footnote">#LimitedEdition · #NoExchangePolicy</span>
+        </article>
+
+        <!-- Dialogue 3 -->
+        <article class="comedy-dialogue-card card-style-3">
+          <div class="card-emoji">📜</div>
+          <p class="telugu-quote">"ఈరోజు నీ బర్త్డే కాబట్టి నీ తప్పులన్నీ మాఫీ... రేపటి నుంచి మళ్ళీ స్టార్ట్! 😂"</p>
+          <span class="card-footnote">#BirthdayPass · #ValidTillMidnight</span>
+        </article>
+
+        <!-- Dialogue 4 -->
+        <article class="comedy-dialogue-card card-style-4">
+          <div class="card-emoji">⚡</div>
+          <p class="telugu-quote">"వయసు పెరుగుతుంది కానీ నీ అల్లరి మాత్రం తగ్గకూడదు!"</p>
+          <span class="card-footnote">#ForeverYoung · #KeepRocking</span>
+        </article>
+
+        <!-- Dialogue 5 -->
+        <article class="comedy-dialogue-card card-style-5">
+          <div class="card-emoji">❤️</div>
+          <p class="telugu-quote">"నవ్వుతూ ఉండు... మమ్మల్ని నవ్విస్తూ ఉండు! ❤️"</p>
+          <span class="card-footnote">#BestSmiles · #KeepShining</span>
+        </article>
+      </div>
+
+      <!-- Upgraded Bondam Personality Analysis Lab -->
+      <div class="personality-lab-card">
+        <div class="lab-stamp">CERTIFIED<br>MADNESS 🧪</div>
+        <div class="lab-header">
+          <span class="lab-tag">TOP SECRET INVESTIGATION REPORT</span>
+          <h3 class="lab-title">TAMARI TINGARITANAM ANALYSIS 📊</h3>
+          <p class="lab-subject">SUBJECT: <strong>BONDAM</strong> • STATUS: <strong>TOTALLY CRAZY & PRECIOUS</strong>
+          </p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat" data-value="99">
+            <div class="stat-top">
+              <span>🎭 Drama Levels</span>
+              <b>0%</b>
+            </div>
+            <div class="meter"><i class="gradient-bar"></i></div>
+          </div>
+
+          <div class="stat" data-value="100">
+            <div class="stat-top">
+              <span>😎 Attitude & Swag</span>
+              <b>0%</b>
+            </div>
+            <div class="meter"><i class="gradient-bar"></i></div>
+          </div>
+
+          <div class="stat" data-value="200">
+            <div class="stat-top">
+              <span>🤪 Craziness</span>
+              <b>0%</b>
+            </div>
+            <div class="meter"><i class="gradient-bar"></i></div>
+          </div>
+
+          <div class="stat" data-value="0">
+            <div class="stat-top">
+              <span>🧠 Common Sense</span>
+              <b>0%</b>
+            </div>
+            <div class="meter"><i class="gradient-bar"></i></div>
+          </div>
+
+          <div class="stat" data-value="15">
+            <div class="stat-top">
+              <span>😴 Sleep: Always Restless</span>
+              <b>0%</b>
+            </div>
+            <div class="meter"><i class="gradient-bar"></i></div>
+          </div>
+
+          <div class="stat" data-value="1000">
+            <div class="stat-top">
+              <span>👑 Always Right</span>
+              <b>0%</b>
+            </div>
+            <div class="meter"><i class="gradient-bar"></i></div>
+          </div>
+
+          <div class="stat" data-value="2000">
+            <div class="stat-top">
+              <span>😇 Innocence (Acting Only)</span>
+              <b>0%</b>
+            </div>
+            <div class="meter"><i class="gradient-bar"></i></div>
+          </div>
+        </div>
+
+        <div class="lab-verdict">
+          <span class="verdict-label">FINAL OFFICIAL VERDICT</span>
+          <h4 class="verdict-result">100% HYBRID PILLA 🔥</h4>
+          <p class="verdict-notes">Handle with extreme care and constant food. No warranty. No return policy.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 7. INTERACTIVE BIRTHDAY CAKE -->
+    <!-- ======================================================== -->
+    <section id="cakeSection" class="scroll-section birthday-cake-section">
+      <div class="section-header">
+        <div class="section-tag cake-tag">SWEET CELEBRATION 🍰</div>
+        <h2 class="section-title telugu-font">CUT THE CAKE 🎂</h2>
+        <p class="section-sub">Make a secret wish in your heart, then tap the button to blow the candles!</p>
+      </div>
+
+      <!-- 3D Interactive Cake Component -->
+      <div class="cake-stage">
+        <div id="birthdayCake" class="interactive-cake">
+          <!-- Candles on top -->
+          <div class="candles-rack">
+            <div class="cake-candle candle-1">
+              <div class="candle-flame"></div>
+              <div class="candle-wick"></div>
+              <div class="candle-body"></div>
+            </div>
+            <div class="cake-candle candle-2">
+              <div class="candle-flame"></div>
+              <div class="candle-wick"></div>
+              <div class="candle-body"></div>
+            </div>
+            <div class="cake-candle candle-3">
+              <div class="candle-flame"></div>
+              <div class="candle-wick"></div>
+              <div class="candle-body"></div>
+            </div>
+          </div>
+
+          <!-- Cake Layers -->
+          <div class="cake-tier tier-top">
+            <div class="tier-frosting">
+              <span class="berry">🍓</span>
+              <span class="berry">🍒</span>
+              <span class="berry">🍓</span>
+            </div>
+            <div class="tier-body"></div>
+          </div>
+
+          <div class="cake-tier tier-mid">
+            <div class="icing-drips"></div>
+            <div class="tier-body"></div>
+          </div>
+
+          <div class="cake-tier tier-base">
+            <div class="frosting-pearls"></div>
+            <div class="tier-body"></div>
+          </div>
+
+          <div class="cake-stand"></div>
+        </div>
+
+        <!-- Make a Wish Button -->
+        <div class="cake-actions">
+          <button id="makeWishBtn" class="magic-btn wish-btn-glow">
+            <span>Make a Wish ✨</span>
+          </button>
+        </div>
+
+        <!-- Wish Reveal Card (Hidden until candles are blown) -->
+        <div id="wishRevealCard" class="wish-reveal-banner">
+          <span class="wish-icon">🎉✨</span>
+          <h3 class="wish-heading telugu-font">కలకాలం సంతోషంగా ఉండు ❤️✨</h3>
+          <p class="wish-text">
+            May this year bless you with boundless joy, great health, endless laughter, and the fulfillment of every
+            sweet dream in your heart! 🎂💖
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 6. SPECIAL BIRTHDAY LETTER (Interactive Envelope) -->
+    <!-- ======================================================== -->
+    <section id="letterSection" class="scroll-section birthday-letter-section">
+      <div class="section-header">
+        <div class="section-tag letter-tag">FROM THE HEART 💌</div>
+        <h2 class="section-title telugu-font">ఒక చిన్న మాట నీ కోసం... ❤️</h2>
+        <p class="section-sub">Click the envelope below to open your special birthday letter!</p>
+      </div>
+
+      <div id="letterContainer" class="letter-interaction-wrapper">
+        <!-- 3D Interactive Envelope -->
+        <div id="interactiveEnvelope" class="vintage-envelope" role="button" aria-label="Open Special Letter"
+          tabindex="0">
+          <div class="envelope-back"></div>
+          <div class="envelope-flap"></div>
+          <div class="envelope-front"></div>
+          <div class="wax-seal">
+            <span>B</span>
+          </div>
+          <div class="envelope-click-cue">
+            <span>💌 Tap to open letter</span>
+          </div>
+        </div>
+
+        <!-- The Special Letter (Slides up & reveals text) -->
+        <article id="specialLetter" class="special-parchment-letter">
+          <div class="parchment-border"></div>
+          <div class="letter-stamp">FOR BONDAM ❤️</div>
+
+          <div class="letter-body-content telugu-font">
+            <p class="letter-para p1">
+              "జీవితంలో మనకి చాలామంది పరిచయం అవుతారు. కానీ కొంతమంది మాత్రమే మన జ్ఞాపకాలలో ప్రత్యేకమైన స్థానం
+              సంపాదించుకుంటారు.
+            </p>
+            <p class="letter-para p2">
+              నీ నవ్వు, నీ అల్లరి, నీ పిచ్చి పనులు... ఇవన్నీ ఎప్పటికీ గుర్తుండిపోయే జ్ఞాపకాలు.
+            </p>
+            <p class="letter-para p3">
+              ఎప్పుడూ ఇలాగే నవ్వుతూ ఉండు. నీ కలలన్నీ నిజం కావాలి. నీ జీవితంలో ఆనందం, విజయాలు, ప్రేమ నిండిపోవాలి.
+            </p>
+            <p class="letter-para p4">
+              ఎన్ని సంవత్సరాలు గడిచినా ఈ స్నేహం ఇలాగే ఉండాలి.
+            </p>
+            <div class="letter-signoff">
+              <strong>Once again, Happy Birthday BONDAM! ❤️</strong>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 8. MEMORIES GALLERY – FIRST FIVE PHOTOS (Exact Order) -->
+    <!-- ======================================================== -->
+    <section id="memoriesSection" class="scroll-section memories-gallery-section">
+      <div class="section-header">
+        <div class="section-tag gallery-tag">PRECIOUS MOMENTS 📸</div>
+        <h2 class="section-title telugu-font">OUR MEMORIES 📸</h2>
+        <p class="section-sub telugu-font">"Some photos are not just pictures... they're stories filled with memories!"
+          ❤️✨</p>
+      </div>
+
+      <!-- Scrapbook Grid: IMAGES 1 TO 5 IN STRICT ORDER -->
+      <div class="scrapbook-memories-grid">
+        <!-- IMAGE 1 -->
+        <article class="polaroid-card tilt-left-1" tabindex="0">
+          <div class="tape-strip tape-center"></div>
+          <div class="polaroid-photo-wrapper">
+            <img src="assets/images/1.jpeg" alt="Memory 1: Smiling together in matching blue" loading="lazy"
+              onerror="this.onerror=null; this.src='assets/images/memory1.jpg';" />
+          </div>
+          <div class="polaroid-info">
+            <p class="polaroid-caption telugu-font">నవ్వుల ప్రయాణం · A Duo Like No Other! ✨ 😄</p>
+            <span class="memory-number">MEMORY #01</span>
+          </div>
+        </article>
+
+        <!-- IMAGE 2 -->
+        <article class="polaroid-card tilt-right-1" tabindex="0">
+          <div class="tape-strip tape-left"></div>
+          <div class="polaroid-photo-wrapper">
+            <img src="assets/images/2.jpeg" alt="Memory 2: Waterfall Adventure" loading="lazy"
+              onerror="this.onerror=null; this.src='assets/images/memory2.jpg';" />
+          </div>
+          <div class="polaroid-info">
+            <p class="polaroid-caption telugu-font">వాటర్‌ఫాల్ సాహసం · Little Adventures, Big Memories! 🌊</p>
+            <span class="memory-number">MEMORY #02</span>
+          </div>
+        </article>
+
+        <!-- IMAGE 3 -->
+        <article class="polaroid-card tilt-left-2" tabindex="0">
+          <div class="tape-strip tape-right"></div>
+          <div class="polaroid-photo-wrapper">
+            <img src="assets/images/3.jpeg" alt="Memory 3: Crossed arms in forest" loading="lazy"
+              onerror="this.onerror=null; this.src='assets/images/memory3.jpg';" />
+          </div>
+          <div class="polaroid-info">
+            <p class="polaroid-caption telugu-font">ఫుల్ స్వాగ్ & ఆటిట్యూడ్ · Unmatched energy 😎</p>
+            <span class="memory-number">MEMORY #03</span>
+          </div>
+        </article>
+
+        <!-- IMAGE 4 -->
+        <article class="polaroid-card tilt-right-2" tabindex="0">
+          <div class="tape-strip tape-center"></div>
+          <div class="polaroid-photo-wrapper">
+            <img src="assets/images/4.jpeg" alt="Memory 4: Campus path walk" loading="lazy"
+              onerror="this.onerror=null; this.src='assets/images/memory4.jpg';" />
+          </div>
+          <div class="polaroid-info">
+            <p class="polaroid-caption telugu-font">కాలేజ్ దారులు · Walk of endless memories 🌿</p>
+            <span class="memory-number">MEMORY #04</span>
+          </div>
+        </article>
+
+        <!-- IMAGE 5 -->
+        <article class="polaroid-card tilt-center" tabindex="0">
+          <div class="tape-strip tape-left"></div>
+          <div class="polaroid-photo-wrapper">
+            <img src="assets/images/5.jpeg" alt="Memory 5: Platform 65 Restaurant smiles" loading="lazy"
+              onerror="this.onerror=null; this.src='assets/images/memory5.jpg';" />
+          </div>
+          <div class="polaroid-info">
+            <p class="polaroid-caption telugu-font">ప్లాట్‌ఫామ్ 65 ఫుడ్ వైబ్స్ · Train treats & endless smiles 🚂</p>
+            <span class="memory-number">MEMORY #05</span>
+          </div>
+        </article>
+      </div>
+
+      <p class="gallery-hint">💡 Tap any photograph to view in full resolution!</p>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- 9. FINAL BIRTHDAY SURPRISE -->
+    <!-- ======================================================== -->
+    <section id="finalSection" class="scroll-section final-surprise-section">
+      <div class="ambient-glow golden-glow"></div>
+      <div class="final-sparkles">✦　　·　　 ✧　　·　✦</div>
+
+      <div class="section-tag final-tag">THE JOURNEY NEVER ENDS 🌟</div>
+
+      <h2 class="final-title telugu-font">
+        "ఇంతటితో అయిపోలేదు బొండం! ❤️"
+      </h2>
+
+      <p class="final-message telugu-font">
+        "ఇంకా ఎన్నో పుట్టినరోజులు, ఎన్నో నవ్వులు, ఎన్నో జ్ఞాపకాలు కలిసి జరుపుకోవాలి!"
+      </p>
+
+      <div class="final-motto-box">
+        <span class="motto-text">Stay Happy. Stay Crazy. Stay Special! ✨</span>
+      </div>
+
+      <div class="final-signatures">
+        <p>Made with genuine friendship, lots of laughs, and coconut magic. 🥥💖</p>
+      </div>
+
+      <!-- Button to restart from opening coconut tree scene -->
+      <div class="final-action-wrapper">
+        <button id="replayAdventureBtn" class="magic-btn replay-glow">
+          <span class="replay-icon">↻</span>
+          <span>మళ్ళీ మొదటికి వెళ్దాం! ❤️</span>
+        </button>
+      </div>
+    </section>
+
+  </div><!-- End Main Celebration Container -->
+
+  <!-- Full-Resolution Lightbox Modal for Memories -->
+  <div id="photoLightboxModal" class="photo-lightbox-modal" role="dialog" aria-modal="true" aria-label="Photo Lightbox">
+    <button id="lightboxClose" class="lightbox-close-btn" aria-label="Close photo preview">✕</button>
+    <div class="lightbox-content">
+      <div class="lightbox-img-frame">
+        <img id="lightboxImg" src="" alt="Enlarged Memory Photo" />
+      </div>
+      <p id="lightboxCaption" class="lightbox-caption telugu-font"></p>
+    </div>
+  </div>
+
+  <!-- Dynamic Confetti Layer -->
+  <div id="confettiLayer" class="confetti-layer" aria-hidden="true"></div>
+
+  <!-- Core Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/coconut.js"></script>
+  <script src="js/main.js"></script>
 </body>
+
 </html>
